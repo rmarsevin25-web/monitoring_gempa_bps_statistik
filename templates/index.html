@@ -1,0 +1,574 @@
+{% extends "base.html" %}
+
+{% block title %}GeoQuake Indonesia{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+
+<!-- =====================================================
+     HERO DASHBOARD
+====================================================== -->
+
+<div class="card hero-card mb-4">
+
+    <div class="card-body">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-8">
+
+                <h1 class="fw-bold mb-2">
+
+                    🌍 GeoQuake Indonesia
+
+                </h1>
+
+                <p class="mb-3">
+
+                    Dashboard Monitoring Gempa BMKG dan Statistik Kependudukan BPS Indonesia
+
+                </p>
+
+                <span class="badge bg-success px-3 py-2">
+
+                    🟢 BMKG LIVE
+
+                </span>
+
+            </div>
+
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+
+                <a href="/update" class="btn btn-success mb-2">
+
+                    🔄 Update BMKG
+
+                </a>
+
+                <a href="/statistik" class="btn btn-primary mb-2">
+
+                    📊 Statistik
+
+                </a>
+
+                <a href="/export/pdf" class="btn btn-danger mb-2">
+
+                    📄 Export PDF
+
+                </a>
+
+                <a href="/export/excel"
+                                      class="btn btn-success">
+
+                <i class="bi bi-file-earmark-excel"></i>
+
+                     Excel
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+    <!-- CARD -->
+    <div class="row g-4 mb-4">
+
+<div class="col-lg-3 col-md-6">
+
+<div class="card dashboard-card bg-primary text-white">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between align-items-center">
+
+<div>
+
+<h6>Total Gempa</h6>
+
+<h1 class="counter" data-target="{{ total_data }}">
+    0
+</h1>
+
+<small>Data BMKG</small>
+
+</div>
+
+<div>
+
+<i class="bi bi-activity display-3"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+       <div class="col-lg-3 col-md-6">
+
+<div class="card dashboard-card bg-danger text-white">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between align-items-center">
+
+<div>
+
+<h6>Magnitude Maksimum</h6>
+
+<h1 class="counter" data-target="{{ magnitude_terbesar }}">
+    0
+</h1>
+
+<small>Skala Richter</small>
+
+</div>
+
+<div>
+
+<i class="bi bi-graph-up-arrow display-3"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+        <div class="col-lg-3 col-md-6">
+
+<div class="card dashboard-card bg-success text-white">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between align-items-center">
+
+<div>
+
+<h6>Total Provinsi</h6>
+
+<h1 class="counter" data-target="{{ total_provinsi }}">
+    0
+</h1>
+
+<small>Data BPS</small>
+
+</div>
+
+<div>
+
+<i class="bi bi-buildings display-3"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+        <div class="col-lg-3 col-md-6">
+
+<div class="card dashboard-card bg-warning text-dark">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between align-items-center">
+
+<div>
+
+<h6>Rata-rata Kepadatan</h6>
+
+<h1 class="counter" data-target="{{ rata_kepadatan }}">
+    0
+</h1>
+
+<small>Jiwa/km²</small>
+
+</div>
+
+<div>
+
+<i class="bi bi-people-fill display-3"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+    <div class="row mt-3">
+
+    <div class="col-md-12">
+
+        <div class="status-card">
+
+            <h5>🟢 Status Sistem</h5>
+
+            <p class="mb-0">
+
+                ✔ Data Gempa berasal dari BMKG<br>
+                ✔ Data Kepadatan Penduduk berasal dari BPS<br>
+                ✔ Database MySQL aktif<br>
+                ✔ Dashboard berhasil terintegrasi
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ======================================================
+     GRAFIK DASHBOARD
+     Grafik Gempa dan Grafik BPS
+====================================================== -->
+
+<div class="row mt-4">
+
+    <!-- Grafik Gempa -->
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card h-100">
+
+            <div class="card-header header-orange">
+
+                📈 Grafik Magnitude Gempa
+
+            </div>
+
+            <div class="card-body">
+
+                <canvas id="chartGempa"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Grafik BPS -->
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card h-100">
+
+            <div class="card-header header-blue">
+
+                📊 Grafik Kepadatan Penduduk
+
+            </div>
+
+            <div class="card-body">
+
+                <canvas id="chartBPS"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+        <!-- PETA GEMPA -->
+
+    <div class="card shadow border-0 mt-4">
+
+        <div class="card-header bg-success text-white">
+
+            <h4 class="mb-0">
+                🗺️ Peta Sebaran Gempa
+            </h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <div id="map" style="height:550px;border-radius:10px;"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DATA BPS -->
+
+    <div class="card shadow border-0 mt-4">
+
+        <div class="card-header bg-primary text-white">
+
+            <h4 class="mb-0">
+                📋 Data Statistik BPS
+            </h4>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+
+    <div class="card border-0 shadow">
+
+        <div class="card-body text-center">
+
+            <h6 class="text-muted">
+                🏙️ Provinsi Terpadat
+            </h6>
+
+            <h5 class="text-primary">
+
+                {% if provinsi_terpadat %}
+
+                    {{ provinsi_terpadat.provinsi }}
+
+                {% endif %}
+
+            </h5>
+
+            <small>
+
+                {{ provinsi_terpadat.kepadatan }} jiwa/km²
+
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-striped table-hover">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>No</th>
+                            <th>Provinsi</th>
+                            <th>Kepadatan</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for item in bps %}
+
+                        <tr>
+
+                            <td>{{ loop.index }}</td>
+
+                            <td>{{ item.provinsi }}</td>
+
+                            <td>{{ item.kepadatan }}</td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- ========================= -->
+<!-- RIWAYAT GEMPA -->
+<!-- ========================= -->
+
+<div class="card shadow border-0 mt-4">
+
+    <div class="card-header bg-danger text-white d-flex justify-content-between">
+
+        <h4 class="mb-0">
+            🌍 Riwayat Gempa BMKG
+        </h4>
+
+        <span class="badge bg-light text-dark">
+
+            {{ total_data }} Data
+
+        </span>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="mb-3">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="form-control"
+                placeholder="🔍 Cari wilayah...">
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Jam</th>
+                        <th>Magnitude</th>
+                        <th>Kedalaman</th>
+                        <th>Wilayah</th>
+                        <th>Potensi</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="gempaTable">
+
+                {% for item in data %}
+
+                    <tr>
+
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.tanggal }}</td>
+                        <td>{{ item.jam }}</td>
+                       <td>
+
+{% if item.magnitude < 4 %}
+
+<span class="badge bg-success">
+    {{ item.magnitude }}
+</span>
+
+{% elif item.magnitude < 5 %}
+
+<span class="badge bg-warning text-dark">
+    {{ item.magnitude }}
+</span>
+
+{% elif item.magnitude < 6 %}
+
+<span class="badge bg-danger">
+    {{ item.magnitude }}
+</span>
+
+{% else %}
+
+<span class="badge bg-dark">
+    {{ item.magnitude }}
+</span>
+
+{% endif %}
+
+</td>
+                        <td>{{ item.kedalaman }}</td>
+                        <td>{{ item.wilayah }}</td>
+                        <td>{{ item.potensi }}</td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- FOOTER -->
+
+<div class="text-center mt-5 mb-3">
+
+    <hr>
+
+    <small class="text-muted">
+
+        © 2026 GeoQuake Indonesia |
+        Data Resmi BMKG & BPS
+
+    </small>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+fetch("/chart-bps")
+.then(res => res.json())
+.then(data => {
+
+    const labels = data.map(x => x.provinsi);
+    const values = data.map(x => x.kepadatan);
+
+    new Chart(document.getElementById("chartBPS"), {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Kepadatan Penduduk",
+                data: values,
+                backgroundColor: "rgba(54,162,235,0.7)"
+            }]
+        }
+    });
+
+});
+
+</script>
+
+<script>
+
+const search = document.getElementById("searchInput");
+
+if (search) {
+    search.addEventListener("keyup", function () {
+
+        const value = this.value.toLowerCase();
+
+        const rows = document.querySelectorAll("#gempaTable tr");
+
+        rows.forEach(row => {
+
+            row.style.display = row.innerText.toLowerCase().includes(value)
+                ? ""
+                : "none";
+
+        });
+
+    });
+}
+
+</script>
+
+
+{% endblock %}

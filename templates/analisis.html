@@ -1,0 +1,366 @@
+{% extends "base.html" %}
+
+{% block title %}Analisis{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h2 class="fw-bold text-primary">
+
+            🤖 AI Disaster Analysis
+
+        </h2>
+
+        <small class="text-muted">
+
+            Analisis otomatis berdasarkan data BMKG dan BPS
+
+        </small>
+
+    </div>
+
+    <span class="badge bg-success fs-6">
+
+        LIVE ANALYSIS
+
+    </span>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-3">
+
+<div class="card shadow">
+
+<div class="card-body text-center">
+
+<h5>Total Gempa</h5>
+
+<h2 class="text-danger">
+{{ total_gempa }}
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="card shadow">
+
+<div class="card-body text-center">
+
+<h5>Rata-rata Magnitude</h5>
+
+<h2 class="text-warning">
+
+{{ rata_magnitude }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="card shadow">
+
+<div class="card-body text-center">
+
+<h5>Total Provinsi</h5>
+
+<h2 class="text-success">
+
+{{ total_provinsi }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="card shadow">
+
+<div class="card-body text-center">
+
+<h5>Rata Kepadatan</h5>
+
+<h2 class="text-primary">
+
+{{ rata_kepadatan }}
+
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<hr>
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- RISIKO NASIONAL -->
+<!-- ========================= -->
+
+<div class="card shadow-lg border-0 mb-4">
+
+<div class="card-body">
+
+<h5>
+
+⚠ Tingkat Risiko Nasional
+
+</h5>
+
+{% if rata_magnitude >= 6 %}
+
+<div class="progress mt-3">
+
+<div class="progress-bar bg-danger" style="width:90%;">
+
+90%
+
+</div>
+
+</div>
+
+<p class="mt-3 text-danger">
+
+Risiko Sangat Tinggi
+
+</p>
+
+{% elif rata_magnitude >=5 %}
+
+<div class="progress mt-3">
+
+<div class="progress-bar bg-warning" style="width:70%;">
+
+70%
+
+</div>
+
+</div>
+
+<p class="mt-3 text-warning">
+
+Risiko Sedang
+
+</p>
+
+{% else %}
+
+<div class="progress mt-3">
+
+<div class="progress-bar bg-success" style="width:35%;">
+
+35%
+
+</div>
+
+</div>
+
+<p class="mt-3 text-success">
+
+Risiko Rendah
+
+</p>
+
+{% endif %}
+
+</div>
+
+</div>
+
+<h3>
+
+🏢 10 Provinsi Terpadat
+
+</h3>
+
+
+<table class="table table-striped">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>No</th>
+
+<th>Provinsi</th>
+
+<th>Kepadatan</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for item in bps %}
+
+<tr>
+
+<td>{{ loop.index }}</td>
+
+<td>{{ item.provinsi }}</td>
+
+<td>{{ item.kepadatan }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+<div class="card shadow-lg border-0 mt-4">
+
+<div class="card-header bg-primary text-white">
+
+🤖 AI Insight
+
+</div>
+
+<div class="card-body">
+
+<ul class="mb-0">
+
+<li>
+
+Total gempa yang berhasil dianalisis adalah
+
+<b>{{ total_gempa }}</b>
+
+kejadian.
+
+</li>
+
+<li>
+
+Rata-rata magnitude mencapai
+
+<b>{{ rata_magnitude }}</b>.
+
+</li>
+
+<li>
+
+Jumlah provinsi yang dianalisis
+
+<b>{{ total_provinsi }}</b>.
+
+</li>
+
+<li>
+
+Wilayah dengan kepadatan tinggi memiliki potensi dampak yang lebih besar apabila terjadi gempa kuat.
+
+</li>
+
+<li>
+
+Monitoring BMKG secara real-time tetap diperlukan untuk meningkatkan mitigasi bencana.
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card shadow-lg border-0 mt-4">
+
+<div class="card-header bg-success text-white">
+
+💡 Rekomendasi AI
+
+</div>
+
+<div class="card-body">
+
+<ul>
+
+<li>
+
+✔ Tingkatkan edukasi mitigasi bencana.
+
+</li>
+
+<li>
+
+✔ Prioritaskan wilayah berpenduduk padat.
+
+</li>
+
+<li>
+
+✔ Perbanyak jalur evakuasi.
+
+</li>
+
+<li>
+
+✔ Tingkatkan monitoring BMKG secara berkala.
+
+</li>
+
+<li>
+
+✔ Integrasikan data BMKG dan BPS untuk perencanaan pembangunan.
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="alert alert-primary mt-4">
+
+<h4>📌 Ringkasan Analisis</h4>
+
+<ul>
+
+<li>Total data gempa yang berhasil dikumpulkan:
+<b>{{ total_gempa }}</b></li>
+
+<li>Jumlah provinsi pada data BPS:
+<b>{{ total_provinsi }}</b></li>
+
+<li>Rata-rata magnitude:
+<b>{{ rata_magnitude }}</b></li>
+
+<li>Rata-rata kepadatan penduduk:
+<b>{{ rata_kepadatan }}</b></li>
+
+</ul>
+
+</div>
+{% endblock %}

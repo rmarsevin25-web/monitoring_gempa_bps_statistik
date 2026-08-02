@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Statistik Gempa{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold">
+                📊 Statistik Gempa BMKG
+            </h2>
+
+            <p class="text-muted">
+                Ringkasan statistik berdasarkan data yang tersimpan pada database.
+            </p>
+
+        </div>
+
+        <a href="/" class="btn btn-secondary">
+            ← Kembali ke Dashboard
+        </a>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-4">
+
+            <div class="card shadow border-0 bg-primary text-white">
+
+                <div class="card-body text-center">
+
+                    <h6>Total Data</h6>
+
+                    <h1>{{ total_data }}</h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-4">
+
+            <div class="card shadow border-0 bg-danger text-white">
+
+                <div class="card-body text-center">
+
+                    <h6>Magnitude Terbesar</h6>
+
+                    <h1>{{ terbesar }}</h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-4">
+
+            <div class="card shadow border-0 bg-success text-white">
+
+                <div class="card-body text-center">
+
+                    <h6>Magnitude Terkecil</h6>
+
+                    <h1>{{ terkecil }}</h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 mb-4">
+
+            <div class="card shadow border-0 bg-warning text-dark">
+
+                <div class="card-body text-center">
+
+                    <h6>Rata-rata Magnitude</h6>
+
+                    <h1>{{ rata_rata }}</h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow border-0 mt-4">
+
+        <div class="card-header bg-dark text-white">
+
+            <h4 class="mb-0">
+                📈 Analisis Data
+            </h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered">
+
+                <tr>
+                    <th>Total Data Gempa</th>
+                    <td>{{ total_data }}</td>
+                </tr>
+
+                <tr>
+                    <th>Magnitude Terbesar</th>
+                    <td>{{ terbesar }}</td>
+                </tr>
+
+                <tr>
+                    <th>Magnitude Terkecil</th>
+                    <td>{{ terkecil }}</td>
+                </tr>
+
+                <tr>
+                    <th>Rata-rata Magnitude</th>
+                    <td>{{ rata_rata }}</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

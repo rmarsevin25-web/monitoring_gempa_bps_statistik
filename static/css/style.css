@@ -1,0 +1,772 @@
+body{
+    background:#f5f7fa;
+}
+
+.card{
+    border:none;
+    border-radius:15px;
+}
+
+.table{
+    border-radius:15px;
+    overflow:hidden;
+}
+
+footer{
+    margin-top:60px;
+}
+
+.bg-orange{
+    background:#fd7e14 !important;
+    color:white !important;
+}
+
+.card{
+    transition:0.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+}
+
+.hero-card{
+
+    border-radius:20px;
+
+    background:white;
+
+    transition:.3s;
+
+}
+
+.hero-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+.dashboard-card{
+
+border:none;
+
+border-radius:20px;
+
+overflow:hidden;
+
+transition:.35s;
+
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.dashboard-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 18px 40px rgba(0,0,0,.25);
+
+}
+
+.dashboard-card h1{
+
+font-size:42px;
+
+font-weight:bold;
+
+margin:0;
+
+}
+
+.dashboard-card h6{
+
+font-weight:600;
+
+opacity:.9;
+
+}
+
+.dashboard-card small{
+
+opacity:.85;
+
+}
+
+.dashboard-card i{
+
+opacity:.35;
+
+transition:.3s;
+
+}
+
+.dashboard-card:hover i{
+
+transform:scale(1.2) rotate(-8deg);
+
+opacity:.7;
+
+}
+
+/* ===========================
+   PREMIUM CARD
+=========================== */
+
+.card{
+
+    border:none;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.20);
+
+}
+
+.card-header{
+
+    border:none;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    padding:18px 25px;
+
+}
+
+.header-orange{
+    background:linear-gradient(90deg,#ffb300,#ff8f00);
+    color:white;
+}
+
+.header-blue{
+    background:linear-gradient(90deg,#00b4db,#0083b0);
+    color:white;
+}
+
+.header-green{
+    background:linear-gradient(90deg,#11998e,#38ef7d);
+    color:white;
+}
+
+.header-red{
+    background:linear-gradient(90deg,#ff416c,#ff4b2b);
+    color:white;
+}
+
+.status-card{
+    background:linear-gradient(135deg,#e8fff5,#f8fffd);
+    border-left:8px solid #16a34a;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+
+.card{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+    opacity:0;
+    transform:translateY(30px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+canvas{
+    max-height:420px;
+}
+
+/* ==========================================================
+   NAVBAR
+   Mengatur tampilan navbar agar lebih modern
+========================================================== */
+
+.navbar{
+
+    background:linear-gradient(90deg,#2563eb,#1e40af) !important;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+    padding:15px 0;
+
+}
+
+.navbar-brand{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+}
+
+.nav-link{
+
+    color:white !important;
+
+    font-weight:500;
+
+    transition:.3s;
+
+    margin-left:10px;
+
+}
+
+.nav-link:hover{
+
+    color:#FFD54F !important;
+
+}
+
+/* ==========================================================
+   BUTTON
+   Animasi tombol
+========================================================== */
+
+.btn{
+
+    transition:.3s;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ==========================================================
+   HERO DASHBOARD
+   Tampilan bagian paling atas website
+========================================================== */
+
+.hero-card{
+
+    background:linear-gradient(135deg,#ffffff,#eef5ff);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.hero-card h1{
+
+    color:#1e3a8a;
+
+    font-weight:700;
+
+}
+
+.hero-card .lead{
+
+    font-size:20px;
+
+}
+
+.hero-card .badge{
+
+    font-size:14px;
+
+    padding:8px 14px;
+
+}
+
+/* ==========================================================
+   CHART
+   Mengatur tampilan grafik
+========================================================== */
+
+canvas{
+
+    width:100% !important;
+
+    max-height:360px;
+
+}
+
+/* ==========================================================
+   LEAFLET MAP
+   Mengatur tampilan peta
+========================================================== */
+
+.leaflet-popup-content{
+
+    font-size:14px;
+
+    line-height:1.6;
+
+}
+
+.leaflet-container{
+
+    border-radius:20px;
+
+}
+
+/* ==========================================================
+   PREMIUM DASHBOARD STYLE
+========================================================== */
+
+/* Background */
+
+body{
+
+    background:#f3f7fb;
+
+    font-family:'Segoe UI',sans-serif;
+
+}
+
+/* =======================================================
+   CARD
+======================================================= */
+
+.card{
+
+    border:none;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
+
+}
+
+/* =======================================================
+   CARD HEADER
+======================================================= */
+
+.card-header{
+
+    border:none;
+
+    font-weight:700;
+
+    font-size:18px;
+
+    padding:15px 20px;
+
+}
+
+/* Header Warna */
+
+.header-blue{
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:white;
+
+}
+
+.header-green{
+
+    background:linear-gradient(135deg,#16a34a,#15803d);
+
+    color:white;
+
+}
+
+.header-orange{
+
+    background:linear-gradient(135deg,#f59e0b,#ea580c);
+
+    color:white;
+
+}
+
+.header-red{
+
+    background:linear-gradient(135deg,#dc2626,#991b1b);
+
+    color:white;
+
+}
+
+/* =======================================================
+   CARD STATISTIK
+======================================================= */
+
+.stat-card{
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+.stat-icon{
+
+    font-size:45px;
+
+    margin-bottom:10px;
+
+}
+
+.stat-value{
+
+    font-size:36px;
+
+    font-weight:bold;
+
+}
+
+.stat-title{
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+/* =======================================================
+   TABLE
+======================================================= */
+
+.table{
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+}
+
+.table thead{
+
+    background:#0f172a;
+
+    color:white;
+
+}
+
+.table tbody tr{
+
+    transition:.2s;
+
+}
+
+.table tbody tr:hover{
+
+    background:#eef6ff;
+
+}
+
+/* =======================================================
+   BUTTON
+======================================================= */
+
+.btn{
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* =======================================================
+   BADGE
+======================================================= */
+
+.badge{
+
+    border-radius:20px;
+
+    padding:8px 14px;
+
+}
+
+/* =======================================================
+   MAP
+======================================================= */
+
+#map{
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+/* =======================================================
+   CANVAS
+======================================================= */
+
+canvas{
+
+    max-height:380px;
+
+}
+
+/* =======================================================
+   ANIMATION
+======================================================= */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.card{
+
+    animation:fadeUp .7s ease;
+
+}
+
+/* ==========================================================
+   HERO DASHBOARD
+========================================================== */
+
+.hero-card{
+
+    background:linear-gradient(135deg,#2563eb,#1e3a8a);
+
+    color:white;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+}
+
+.hero-card h1{
+
+    font-size:40px;
+
+    font-weight:800;
+
+}
+
+.hero-card p{
+
+    font-size:18px;
+
+    opacity:.95;
+
+}
+
+.hero-card .btn{
+
+    min-width:170px;
+
+}
+
+/* ==========================================================
+   LOADING SCREEN
+========================================================== */
+
+#loader{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(135deg,#2563eb,#1e3a8a);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+    transition:.6s;
+
+}
+
+.loader-content{
+
+    text-align:center;
+
+    color:white;
+
+}
+
+.loader-logo{
+
+    font-size:70px;
+
+    animation:spinLogo 2s linear infinite;
+
+}
+
+@keyframes spinLogo{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+.loader-content h2{
+
+    margin-top:15px;
+
+    font-weight:bold;
+
+}
+
+.loader-content p{
+
+    opacity:.9;
+
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+body.dark-mode{
+
+    background:#121212 !important;
+
+    color:#f1f1f1;
+
+}
+
+body.dark-mode .card{
+
+    background:#1e1e1e;
+
+    color:white;
+
+}
+
+body.dark-mode .table{
+
+    color:white;
+
+}
+
+body.dark-mode .table thead{
+
+    background:#343a40;
+
+}
+
+body.dark-mode .table tbody tr{
+
+    background:#1e1e1e;
+
+}
+
+body.dark-mode .table tbody tr:hover{
+
+    background:#2d2d2d;
+
+}
+
+body.dark-mode footer{
+
+    background:#111 !important;
+
+}
+
+body.dark-mode .navbar{
+
+    background:#0d1117 !important;
+
+}
+
+body.dark-mode .alert{
+
+    background:#222;
+
+    color:white;
+
+    border:none;
+
+}
+
+body.dark-mode input{
+
+    background:#2b2b2b;
+
+    color:white;
+
+    border:1px solid #444;
+
+}
+
+body.dark-mode input::placeholder{
+
+    color:#bbb;
+
+}
+
