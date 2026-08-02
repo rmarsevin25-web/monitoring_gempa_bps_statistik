@@ -236,8 +236,92 @@ def history():
         "dashboard.html",
         data=data
     )
+@app.route("/tambah-bps", methods=["GET", "POST"])
+def tambah_bps():
 
+    if "admin" not in session:
+        return redirect(url_for("login"))
 
+    if request.method == "POST":
+
+        data = StatistikBPS(
+            provinsi=request.form["provinsi"],
+            kepadatan=float(request.form["kepadatan"])
+        )
+
+        db.session.add(data)
+        db.session.commit()
+
+        flash("Data BPS berhasil ditambahkan!")
+
+        return redirect(url_for("home"))
+
+    return render_template("tambah_bps.html")
+
+@app.route("/edit-bps/<int:id>", methods=["GET", "POST"])
+def edit_bps(id):
+
+    if "admin" not in session:
+        return redirect(url_for("login"))
+
+    data = StatistikBPS.query.get_or_404(id)
+
+    if request.method == "POST":
+
+        data.provinsi = request.form["provinsi"]
+        data.kepadatan = float(request.form["kepadatan"])
+
+        db.session.commit()
+
+        flash("Data berhasil diperbarui!")
+
+        return redirect(url_for("home"))
+
+    return render_template(
+        "edit_bps.html",
+        data=data
+    )
+@app.route("/hapus-bps/<int:id>")
+def hapus_bps(id):
+
+    if "admin" not in session:
+        return redirect(url_for("login"))
+
+    data = StatistikBPS.query.get_or_404(id)
+
+    db.session.delete(data)
+    db.session.commit()
+
+    flash("Data berhasil dihapus!")
+
+    return redirect(url_for("home"))
+
+@app.route("/tambah-gempa", methods=["GET", "POST"])
+def tambah_gempa():
+
+    if "admin" not in session:
+        return redirect(url_for("login"))
+
+    if request.method == "POST":
+
+        gempa = Gempa(
+            tanggal=request.form["tanggal"],
+            jam=request.form["jam"],
+            magnitude=float(request.form["magnitude"]),
+            kedalaman=request.form["kedalaman"],
+            wilayah=request.form["wilayah"],
+            potensi=request.form["potensi"],
+            koordinat=request.form["koordinat"]
+        )
+
+        db.session.add(gempa)
+        db.session.commit()
+
+        flash("Data gempa berhasil ditambahkan!")
+
+        return redirect(url_for("home"))
+
+    return render_template("tambah.html")
 # ==========================
 # HALAMAN TENTANG
 # ==========================

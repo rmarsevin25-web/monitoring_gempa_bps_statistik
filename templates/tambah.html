@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Tambah Data Gempa{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-success text-white">
+
+                    <h3 class="mb-0">
+                        ➕ Tambah Data Gempa
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label">Tanggal</label>
+                            <input type="text" name="tanggal" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Jam</label>
+                            <input type="text" name="jam" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Magnitude</label>
+                            <input type="number" step="0.1" name="magnitude" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Kedalaman</label>
+                            <input type="text" name="kedalaman" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Wilayah</label>
+                            <input type="text" name="wilayah" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Potensi</label>
+                            <input type="text" name="potensi" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Koordinat</label>
+                            <input type="text" name="koordinat" class="form-control" required>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+
+                            <a href="{{ url_for('history') }}" class="btn btn-secondary">
+                                ← Kembali
+                            </a>
+
+                            <button type="submit" class="btn btn-success">
+                                💾 Simpan Data
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
