@@ -29,7 +29,16 @@ app.secret_key = "geoquake123"
 # ==========================
 # KONFIGURASI DATABASE
 # ==========================
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:@localhost/bps_lubuklinggau"
+import os
+DB_HOST = os.getenv("MYSQLHOST", "localhost")
+DB_PORT = os.getenv("MYSQLPORT", "3306")
+DB_USER = os.getenv("MYSQLUSER", "root")
+DB_PASSWORD = os.getenv("MYSQLPASSWORD", "")
+DB_NAME = os.getenv("MYSQLDATABASE", "bps_lubuklinggau")
+
+app.config["SQLALCHEMY_DATABASE_URI"] = (
+    f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
